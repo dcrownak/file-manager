@@ -42,17 +42,33 @@ return [
     */
 
     'disks' => [
+        // images folder in public path
+        'images' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'url' => env('APP_URL').'/images',
+        ],
+
+        // public folder in storage/app/public
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage', // https://laravel.com/docs/5.7/filesystem#file-urls
+            'visibility' => 'public',
+        ],
+
+        // ftp
+        'dd-wrt' => [
+            'driver'   => 'ftp',
+            'host'     => 'ftp.dd-wrt.com',
+            'username' => 'anonymous',
+            'passive'  => true,
+            'timeout'  => 30,
+        ],
 
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-        ],
-
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
         ],
 
         's3' => [
