@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BasicControlController;
+use App\Http\Controllers\EmailControlController;
+use App\Http\Controllers\EmailTemplateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/file', function () {
-
     return view('file');
-});
+})->name('file.index');
+
+
+Route::get('/basic-control', [BasicControlController::class, 'index'])->name('basicControl.index');
+Route::post('/basic-control', [BasicControlController::class, 'store'])->name('basicControl.store');
+
+
+
+
+
+
